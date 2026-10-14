@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>l'Amala Florist</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        :root { --cream: #FDFBF7; --tan: #F4EAE1; --brown: #8C6A5C; --dark: #5C4033; --green: #A3B19B; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Quicksand', sans-serif; }
+        body { background-color: var(--cream); padding-bottom: 70px; }
+        h1, h2, h3 { font-family: 'Fredoka', sans-serif; color: var(--dark); text-align: center; }
+        header { background-color: white; padding: 15px; text-align: center; border-bottom: 2px solid var(--tan); font-family: 'Fredoka', sans-serif; font-size: 20px; color: var(--dark); }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid var(--tan); z-index: 99; }
+        .nav-item { background: none; border: none; color: var(--brown); display: flex; flex-direction: column; align-items: center; font-size: 11px; font-weight: 600; cursor: pointer; }
+        .nav-item.active { color: var(--dark); }
+        .page { display: none; padding: 20px; max-width: 600px; margin: 0 auto; }
+        .page.active { display: block; }
+        .hero { text-align: center; padding: 40px 20px; background: var(--tan); border-radius: 20px; margin-bottom: 20px; }
+        .grid-produk { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; }
+        .card-produk { background: white; border-radius: 16px; border: 1px solid var(--tan); text-align: center; padding-bottom: 15px; overflow: hidden; }
+        .img-produk { width: 100%; height: 140px; object-fit: cover; }
+        .card-produk h3 { font-size: 14px; margin: 10px 5px 2px; }
+        .harga { color: var(--brown); font-weight: 700; font-size: 13px; margin-bottom: 10px; }
+        .btn-tambah { background-color: var(--green); border: none; padding: 6px 12px; border-radius: 8px; color: white; font-weight: bold; font-size: 12px; cursor: pointer; }
+        .cart-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--tan); }
+        .input-group { margin-bottom: 12px; }
+        .input-group label { display: block; font-size: 12px; font-weight: bold; margin-bottom: 5px; color: var(--brown); }
+        .input-group input, .input-group textarea { width: 100%; padding: 10px; border-radius: 10px; border: 1px solid var(--tan); background: white; }
+        .btn-checkout { background-color: #25D366; color: white; border: none; width: 100%; padding: 12px; border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+    <header>🌿 l'Amala Florist</header>
+
+    <!-- 1. BERANDA -->
+    <div id="page-beranda" class="page active">
+        <div class="hero">
+            <h1>Buket Cantik Alami ✨</h1>
+            <p style="margin: 10px 0 15px; color: var(--brown);">Sentuhan kehangatan rustic untuk momen berhargamu.</p>
+            <button style="background: var(--dark); color: white; border: none; padding: 10px 20px; border-radius: 15px; font-weight: bold;" onclick="bukaHalaman('menu')">Lihat Menu</button>
+        </div>
+    </div>
+
+    <!-- 2. MENU -->
+    <div id="page-menu" class="page">
+        <h2 style="margin-bottom:20px;">Katalog Menu l'Amala 🧺</h2>
+        <div class="grid-produk">
+            <div class="card-produk">
+                <img src="wisuda.jpg.jpg" class="img-produk">
+                <h3>Buket Wisuda Premium</h3><p class="harga">Rp 85.000</p>
+                <button class="btn-tambah" onclick="tambahItem('Buket Wisuda Premium', 85000)">+ Keranjang</button>
+            </div>
+            <div class="card-produk">
+                <img src="uang.jpg.jpg" class="img-produk">
+                <h3>Buket Uang Asli</h3><p class="harga">Rp 150.000</p>
+                <button class="btn-tambah" onclick="tambahItem('Buket Uang Asli', 150000)">+ Keranjang</button>
+            </div>
+            <div class="card-produk">
+                <img src="artificial.jpg.jpg" class="img-produk">
+                <h3>Buket Bunga Palsu</h3><p class="harga">Rp 65.000</p>
+                <button class="btn-tambah" onclick="tambahItem('Buket Bunga Palsu', 65000)">+ Keranjang</button>
+            </div>
+            <div class="card-produk">
+                <img src="snack.jpg.jpg" class="img-produk">
+                <h3>Buket Snack & Uang</h3><p class="harga">Rp 95.000</p>
+                <button class="btn-tambah" onclick="tambahItem('Buket Snack & Uang', 95000)">+ Keranjang</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. ALAMAT TOKO -->
+    <div id="page-lokasi" class="page">
+        <div style="background: white; padding: 20px; border-radius: 16px; border: 1px solid var(--tan); text-align: center;">
+            <i class="fa-solid fa-map-location-dot" style="font-size:40px; color:var(--brown); margin-bottom:10px;"></i>
+            <h2>Lokasi Toko Kami 📍</h2>
+            <p style="margin-top:10px; line-height:1.6;"><strong>l'Amala Florist</strong> menerima pesanan online dan siap kirim ke alamat rumahmu dengan aman dan rapi.</p>
+        </div>
+    </div>
+
+    <!-- 4. KERANJANG -->
+    <div id="page-keranjang" class="page">
+        <h2 style="margin-bottom:20px;">Keranjang Belanja l'Amala 🛒</h2>
+        <div id="isi-keranjang" style="background:white; padding:15px; border-radius:16px; border:1px solid var(--tan); margin-bottom:20px;"></div>
+        <div style="background:white; padding:15px; border-radius:16px; border:1px solid var(--tan);">
+            <h3>Data Pengiriman</h3>
+            <div class="input-group" style="margin-top:10px;"><label>Nama Penerima</label><input type="text" id="pembeli-nama" placeholder="Nama kamu..."></div>
+            <div class="input-group"><label>Alamat Lengkap</label><textarea id="pembeli-alamat" rows="3" placeholder="Alamat rumah..."></textarea></div>
+            <div style="font-size:16px; font-weight:bold; margin-top:15px; display:flex; justify-content:space-between;"><span>Total:</span><span id="total-harga">Rp 0</span></div>
+            <button class="btn-checkout" onclick="kirimWhatsApp()"><i class="fa-brands fa-whatsapp"></i> Pesan via WA</button>
+        </div>
+    </div>
+
+    <!-- NAVIGASI BAWAH -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" id="btn-nav-beranda" onclick="bukaHalaman('beranda')"><i class="fa-solid fa-house"></i>Beranda</button>
+        <button class="nav-item" id="btn-nav-menu" onclick="bukaHalaman('menu')"><i class="fa-solid fa-basket-shopping"></i>Menu</button>
+        <button class="nav-item" id="btn-nav-lokasi" onclick="bukaHalaman('lokasi')"><i class="fa-solid fa-location-dot"></i>Alamat</button>
+        <button class="nav-item" id="btn-nav-keranjang" onclick="bukaHalaman('keranjang')"><i class="fa-solid fa-cart-shopping"></i>Keranjang</button>
+    </nav>
+
+    <script>
+        // GANTI NOMOR WHATSAPP KAMU DI SINI
+        const NOMOR_WHATSAPP = "6283875905994"; 
+
+        let kranjang = [];
+        function bukaHalaman(h) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            document.getElementById('page-' + h).classList.add('active');
+            document.getElementById('btn-nav-' + h).classList.add('active');
+        }
+        function tambahItem(n, h) {
+            let s = kranjang.find(i => i.nama === n);
+            if (s) { s.jml += 1; } else { kranjang.push({ nama: n, harga: h, jml: 1 }); }
+            upCart(); alert("Buket berhasil ditambah! 🧺");
+        }
+        function hapusItem(n) { kranjang = kranjang.filter(i => i.nama !== n); upCart(); }
+        function upCart() {
+            const list = document.getElementById('isi-keranjang'); const tot = document.getElementById('total-harga');
+            if (kranjang.length === 0) { list.innerHTML = `<p style="text-align:center;color:gray;">Keranjang kosong... 🌿</p>`; tot.innerText = "Rp 0"; return; }
+            list.innerHTML = ''; let tHarga = 0;
+            kranjang.forEach(i => {
+                tHarga += (i.harga * i.jml);
+                list.innerHTML += `<div class="cart-item"><div><strong>${i.nama}</strong><br><small>${i.jml}x - Rp ${i.harga.toLocaleString('id-ID')}</small></div><button style="background:none; border:none; color:#BA7A7A;" onclick="hapusItem('${i.nama}')">Hapus</button></div>`;
+            });
+            tot.innerText = "Rp " + tHarga.toLocaleString('id-ID');
+        }
+        function kirimWhatsApp() {
+            if (kranjang.length === 0) { alert("Keranjang kosong!"); return; }
+            let nUser = document.getElementById('pembeli-nama').value.trim();
+            let aUser = document.getElementById('pembeli-alamat').value.trim();
+            if (nUser === "" || aUser === "") { alert("Mohon isi Nama & Alamat!"); return; }
+            let txt = `Halo l'Amala Florist, aku mau order! ✨\n\n*Nama:* ${nUser}\n*Alamat:* ${aUser}\n\n*Pesanan:*\n`;
+            let tHarga = 0;
+            kranjang.forEach((i, idx) => { let sub = i.harga * i.jml; tHarga += sub; txt += `${idx + 1}. ${i.nama} (${i.jml}x) = Rp ${sub.toLocaleString('id-ID')}\n`; });
+            txt += `\n*Total:* Rp ${tHarga.toLocaleString('id-ID')}\n\nMohon diproses, makasih! 🌿`;
+            window.open(`https://whatsapp.com{6283875905994}&text=${encodeURIComponent(txt)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
